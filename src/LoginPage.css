@@ -1,0 +1,445 @@
+/* ── Brand tokens ──────────────────────────────────────────────────────────── */
+:root {
+  --deep-red: #660810;
+  --dark-red: #270707;
+  --stone: #f1ebeb;
+  --grey-orange: #d6c0b1;
+  --white: #ffffff;
+  --ink: #1a1010;
+  --muted: #7a6a6a;
+  --border: #e8dede;
+  --input-bg: #faf7f7;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --transition: 0.2s ease;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Page shell ────────────────────────────────────────────────────────────── */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--stone);
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* ── Left panel ────────────────────────────────────────────────────────────── */
+.login-panel {
+  width: 46%;
+  min-width: 300px;
+  background: var(--dark-red);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative circles */
+.login-panel::before,
+.login-panel::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.login-panel::before {
+  width: 380px;
+  height: 380px;
+  background: var(--deep-red);
+  top: -120px;
+  right: -100px;
+  opacity: 0.7;
+}
+.login-panel::after {
+  width: 280px;
+  height: 280px;
+  background: rgba(102, 8, 16, 0.4);
+  bottom: -80px;
+  left: -80px;
+}
+
+/* Brand top section */
+.panel-top {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-mark {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--grey-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.logo-dot-wrap {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.logo-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--grey-orange);
+}
+.logo-dot.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.logo-dot.top    { top: 0;   left: 50%; transform: translateX(-50%); }
+.logo-dot.left   { top: 50%; left: 0;   transform: translateY(-50%); }
+.logo-dot.right  { top: 50%; right: 0;  transform: translateY(-50%); }
+
+.brand-name {
+  color: var(--white);
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.brand-sub {
+  color: var(--grey-orange);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+  margin-top: 0.35rem;
+}
+
+/* Spice strip — the design signature */
+.spice-strip {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 2.5rem 0;
+}
+
+.spice-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0.55;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.78rem;
+  color: var(--stone);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.spice-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--grey-orange);
+  flex-shrink: 0;
+}
+
+.spice-line {
+  flex: 1;
+  height: 0.5px;
+  background: var(--grey-orange);
+  opacity: 0.4;
+}
+
+/* Quote */
+.panel-quote {
+  position: relative;
+  z-index: 1;
+  border-top: 0.5px solid rgba(214, 192, 177, 0.3);
+  padding-top: 1.5rem;
+}
+
+.panel-quote p {
+  color: var(--stone);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+.panel-quote cite {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--grey-orange);
+  font-style: normal;
+  font-size: 0.72rem;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Right form section ────────────────────────────────────────────────────── */
+.login-form-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+.login-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.8rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 2px 40px rgba(39, 7, 7, 0.08);
+}
+
+/* Card header */
+.form-eyebrow {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--deep-red);
+  margin-bottom: 0.5rem;
+}
+
+.form-heading {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.4rem;
+}
+
+.form-sub {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* Accent bar under heading */
+.heading-accent {
+  width: 36px;
+  height: 2.5px;
+  background: var(--deep-red);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+/* Fields */
+.field {
+  margin-bottom: 1.1rem;
+}
+
+.field label {
+  display: block;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.02em;
+}
+
+.field input {
+  width: 100%;
+  padding: 0.82rem 1rem;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.92rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--input-bg);
+  color: var(--ink);
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.field input:focus {
+  border-color: var(--deep-red);
+  background: var(--white);
+}
+
+.field input::placeholder {
+  color: #c4b5b5;
+}
+
+/* Forgot */
+.forgot-row {
+  text-align: right;
+  margin: -0.2rem 0 1.5rem;
+}
+
+.forgot-link {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.82rem;
+  color: var(--deep-red);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Error */
+.form-error {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.82rem;
+  color: var(--deep-red);
+  background: rgba(102, 8, 16, 0.06);
+  border-left: 3px solid var(--deep-red);
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+/* Submit button */
+.btn-primary {
+  width: 100%;
+  padding: 0.88rem;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  background: var(--deep-red);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), transform 0.1s ease;
+  margin-bottom: 1.2rem;
+}
+
+.btn-primary:hover {
+  background: var(--dark-red);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.divider-line {
+  flex: 1;
+  height: 0.5px;
+  background: var(--border);
+}
+
+.divider-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* Google button */
+.btn-google {
+  width: 100%;
+  padding: 0.82rem;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: background var(--transition), border-color var(--transition);
+  margin-bottom: 2rem;
+}
+
+.btn-google:hover {
+  background: var(--stone);
+  border-color: #d0bebe;
+}
+
+/* Footer */
+.form-footer {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.form-footer button {
+  background: none;
+  border: none;
+  color: var(--deep-red);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+  }
+  .login-panel {
+    width: 100%;
+    min-width: unset;
+    padding: 2rem;
+    min-height: 220px;
+  }
+  .panel-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .logo-mark {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .spice-strip,
+  .panel-quote {
+    display: none;
+  }
+  .login-form-wrap {
+    padding: 2rem 1rem;
+  }
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ── Password field additions ─────────────────────────────────────────────── */
+.pass-wrap { position:relative; }
+.pass-wrap input { padding-right:3rem; }
+.pass-toggle {
+  position:absolute; right:0.85rem; top:50%; transform:translateY(-50%);
+  background:none; border:none; cursor:pointer; color:#7a6a6a;
+  font-size:0.78rem; font-family:Arial,sans-serif; padding:0;
+}
+.form-error {
+  font-family:Arial,sans-serif; font-size:0.82rem; color:#cc3333;
+  background:#fff0f0; border-left:3px solid #cc3333;
+  padding:0.6rem 0.8rem; border-radius:6px; margin-bottom:1rem;
+}
