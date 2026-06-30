@@ -4,6 +4,7 @@ import LoginPage    from "./LoginPage";
 import PhoneEntry   from "./PhoneEntry";
 import OtpVerify    from "./OtpVerify";
 import SetupProfile from "./SetupProfile";
+import MenuPage from './MenuPage';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Screens
@@ -42,7 +43,7 @@ function AppInner() {
           Signed in as <strong>{user?.email}</strong>
         </p>
         <p style={{ color:"#7a6a6a", fontFamily:"Arial,sans-serif", fontSize:"0.85rem" }}>
-          (This is a placeholder — your teammate's home page goes here)
+          return <MenuPage onCartOpen={() => console.log("cart clicked")} />;
         </p>
         <button
           onClick={() => { logout(); setScreen(SCREENS.LOGIN); }}
