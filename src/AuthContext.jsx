@@ -13,10 +13,7 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   // user = { phone, email } if logged in, null if not
-  const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem("tc_user");
-    return saved ? JSON.parse(saved) : null;
-  });
+  const [user, setUser] = useState(null);
 
   // ── Called after OTP verified + profile set up ──────────────────────────
   const register = ({ phone, email }) => {
